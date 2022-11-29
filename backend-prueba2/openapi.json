@@ -1,0 +1,3966 @@
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "backend-prueba2",
+    "version": "0.0.1",
+    "description": "backend de una app que permita gestionar el proceso de selección de personal a contratar para cubrir diferentes plazas en una empresa",
+    "contact": {
+      "name": "Eldershield",
+      "email": "danymd2003@gmail.com"
+    }
+  },
+  "paths": {
+    "/datos-plazas/count": {
+      "get": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "count",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosPlaza model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosPlaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosPlaza>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosPlazaController.count"
+      }
+    },
+    "/datos-plazas/{id}/plaza": {
+      "get": {
+        "x-controller-name": "DatosPlazaPlazaController",
+        "x-operation-name": "getPlaza",
+        "tags": [
+          "DatosPlazaPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza belonging to DatosPlaza",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Plaza"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatosPlazaPlazaController.getPlaza"
+      }
+    },
+    "/datos-plazas/{id}": {
+      "put": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosPlaza PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPlaza"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatosPlazaController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosPlaza PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPlazaPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatosPlazaController.updateById"
+      },
+      "get": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "findById",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosPlaza model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosPlazaWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosPlaza.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosPlazaController.findById"
+      },
+      "delete": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosPlaza DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatosPlazaController.deleteById"
+      }
+    },
+    "/datos-plazas": {
+      "post": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "create",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosPlaza model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosPlaza"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDatosPlaza"
+              }
+            }
+          }
+        },
+        "operationId": "DatosPlazaController.create"
+      },
+      "patch": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosPlaza PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosPlaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosPlaza>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPlazaPartial"
+              }
+            }
+          }
+        },
+        "operationId": "DatosPlazaController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "DatosPlazaController",
+        "x-operation-name": "find",
+        "tags": [
+          "DatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of DatosPlaza model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DatosPlazaWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosPlaza.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosPlazaController.find"
+      }
+    },
+    "/datos-solicitantes/count": {
+      "get": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "count",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosSolicitante model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosSolicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosSolicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosSolicitanteController.count"
+      }
+    },
+    "/datos-solicitantes/{id}/solicitante": {
+      "get": {
+        "x-controller-name": "DatosSolicitanteSolicitanteController",
+        "x-operation-name": "getSolicitante",
+        "tags": [
+          "DatosSolicitanteSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante belonging to DatosSolicitante",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitante"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatosSolicitanteSolicitanteController.getSolicitante"
+      }
+    },
+    "/datos-solicitantes/{id}": {
+      "put": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosSolicitante PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosSolicitante"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatosSolicitanteController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosSolicitante PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosSolicitantePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatosSolicitanteController.updateById"
+      },
+      "get": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "findById",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosSolicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosSolicitanteWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosSolicitante.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosSolicitanteController.findById"
+      },
+      "delete": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "DatosSolicitante DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatosSolicitanteController.deleteById"
+      }
+    },
+    "/datos-solicitantes": {
+      "post": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "create",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosSolicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosSolicitante"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDatosSolicitante"
+              }
+            }
+          }
+        },
+        "operationId": "DatosSolicitanteController.create"
+      },
+      "patch": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "DatosSolicitante PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosSolicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosSolicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosSolicitantePartial"
+              }
+            }
+          }
+        },
+        "operationId": "DatosSolicitanteController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "DatosSolicitanteController",
+        "x-operation-name": "find",
+        "tags": [
+          "DatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of DatosSolicitante model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DatosSolicitanteWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosSolicitante.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatosSolicitanteController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/plazas/count": {
+      "get": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "count",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Plaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Plaza>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaController.count"
+      }
+    },
+    "/plazas/{id}/datos-plazas": {
+      "post": {
+        "x-controller-name": "PlazaDatosPlazaController",
+        "x-operation-name": "create",
+        "tags": [
+          "PlazaDatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosPlaza"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDatosPlazaInPlaza"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaDatosPlazaController.create"
+      },
+      "patch": {
+        "x-controller-name": "PlazaDatosPlazaController",
+        "x-operation-name": "patch",
+        "tags": [
+          "PlazaDatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza.DatosPlaza PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosPlaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosPlaza>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosPlazaPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaDatosPlazaController.patch"
+      },
+      "get": {
+        "x-controller-name": "PlazaDatosPlazaController",
+        "x-operation-name": "find",
+        "tags": [
+          "PlazaDatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Plaza has many DatosPlaza",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DatosPlaza"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaDatosPlazaController.find"
+      },
+      "delete": {
+        "x-controller-name": "PlazaDatosPlazaController",
+        "x-operation-name": "delete",
+        "tags": [
+          "PlazaDatosPlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza.DatosPlaza DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosPlaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosPlaza>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaDatosPlazaController.delete"
+      }
+    },
+    "/plazas/{id}/solicitantes": {
+      "post": {
+        "x-controller-name": "PlazaSolicitanteController",
+        "x-operation-name": "create",
+        "tags": [
+          "PlazaSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "create a Solicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitante"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitanteInPlaza"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaSolicitanteController.create"
+      },
+      "patch": {
+        "x-controller-name": "PlazaSolicitanteController",
+        "x-operation-name": "patch",
+        "tags": [
+          "PlazaSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza.Solicitante PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitantePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaSolicitanteController.patch"
+      },
+      "get": {
+        "x-controller-name": "PlazaSolicitanteController",
+        "x-operation-name": "find",
+        "tags": [
+          "PlazaSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Plaza has many Solicitante through Solicitud",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Solicitante"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaSolicitanteController.find"
+      },
+      "delete": {
+        "x-controller-name": "PlazaSolicitanteController",
+        "x-operation-name": "delete",
+        "tags": [
+          "PlazaSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza.Solicitante DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaSolicitanteController.delete"
+      }
+    },
+    "/plazas/{id}": {
+      "put": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plaza PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Plaza"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plaza PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlazaPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PlazaController.updateById"
+      },
+      "get": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "findById",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlazaWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plaza.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaController.findById"
+      },
+      "delete": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Plaza DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PlazaController.deleteById"
+      }
+    },
+    "/plazas": {
+      "post": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "create",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plaza"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPlaza"
+              }
+            }
+          }
+        },
+        "operationId": "PlazaController.create"
+      },
+      "patch": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Plaza PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Plaza.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Plaza>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlazaPartial"
+              }
+            }
+          }
+        },
+        "operationId": "PlazaController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "PlazaController",
+        "x-operation-name": "find",
+        "tags": [
+          "PlazaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Plaza model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlazaWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Plaza.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "PlazaController.find"
+      }
+    },
+    "/solicitantes/count": {
+      "get": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "count",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitanteController.count"
+      }
+    },
+    "/solicitantes/{id}/datos-solicitantes": {
+      "post": {
+        "x-controller-name": "SolicitanteDatosSolicitanteController",
+        "x-operation-name": "create",
+        "tags": [
+          "SolicitanteDatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DatosSolicitante"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDatosSolicitanteInSolicitante"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitanteDatosSolicitanteController.create"
+      },
+      "patch": {
+        "x-controller-name": "SolicitanteDatosSolicitanteController",
+        "x-operation-name": "patch",
+        "tags": [
+          "SolicitanteDatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante.DatosSolicitante PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosSolicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosSolicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatosSolicitantePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitanteDatosSolicitanteController.patch"
+      },
+      "get": {
+        "x-controller-name": "SolicitanteDatosSolicitanteController",
+        "x-operation-name": "find",
+        "tags": [
+          "SolicitanteDatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Solicitante has many DatosSolicitante",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DatosSolicitante"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitanteDatosSolicitanteController.find"
+      },
+      "delete": {
+        "x-controller-name": "SolicitanteDatosSolicitanteController",
+        "x-operation-name": "delete",
+        "tags": [
+          "SolicitanteDatosSolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante.DatosSolicitante DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "DatosSolicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<DatosSolicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitanteDatosSolicitanteController.delete"
+      }
+    },
+    "/solicitantes/{id}": {
+      "put": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitante PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Solicitante"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitanteController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitante PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitantePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitanteController.updateById"
+      },
+      "get": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "findById",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolicitanteWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitante.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitanteController.findById"
+      },
+      "delete": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitante DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitanteController.deleteById"
+      }
+    },
+    "/solicitantes": {
+      "post": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "create",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitante"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitante"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitanteController.create"
+      },
+      "patch": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitante PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitante.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitante>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitantePartial"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitanteController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "SolicitanteController",
+        "x-operation-name": "find",
+        "tags": [
+          "SolicitanteController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Solicitante model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SolicitanteWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitante.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitanteController.find"
+      }
+    },
+    "/solicituds/count": {
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "count",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.count"
+      }
+    },
+    "/solicituds/{id}": {
+      "put": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Solicitud"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitudController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SolicitudController.updateById"
+      },
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "findById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SolicitudWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.findById"
+      },
+      "delete": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Solicitud DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SolicitudController.deleteById"
+      }
+    },
+    "/solicituds": {
+      "post": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "create",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSolicitud"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitudController.create"
+      },
+      "patch": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Solicitud PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Solicitud.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Solicitud>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SolicitudPartial"
+              }
+            }
+          }
+        },
+        "operationId": "SolicitudController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "SolicitudController",
+        "x-operation-name": "find",
+        "tags": [
+          "SolicitudController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Solicitud model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SolicitudWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Solicitud.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SolicitudController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Plaza": {
+        "title": "Plaza",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "iddatosPlaza": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "iddatosPlaza"
+        ],
+        "additionalProperties": false
+      },
+      "DatosPlaza": {
+        "title": "DatosPlaza",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombrePuesto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "requisitos": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombrePuesto",
+          "descripcion",
+          "requisitos"
+        ],
+        "additionalProperties": false
+      },
+      "NewDatosPlaza": {
+        "title": "NewDatosPlaza",
+        "type": "object",
+        "description": "(tsType: Omit<DatosPlaza, 'id'>, schemaOptions: { title: 'NewDatosPlaza', exclude: [ 'id' ] })",
+        "properties": {
+          "nombrePuesto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "requisitos": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombrePuesto",
+          "descripcion",
+          "requisitos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<DatosPlaza, 'id'>"
+      },
+      "DatosSolicitanteWithRelations": {
+        "title": "DatosSolicitanteWithRelations",
+        "type": "object",
+        "description": "(tsType: DatosSolicitanteWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "competencias": {
+            "type": "string"
+          },
+          "habilidades": {
+            "type": "string"
+          },
+          "experiencia": {
+            "type": "string"
+          },
+          "educacion": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          },
+          "solicitantes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SolicitanteWithRelations"
+            }
+          },
+          "solicitante": {
+            "$ref": "#/components/schemas/SolicitanteWithRelations"
+          }
+        },
+        "required": [
+          "nombre",
+          "apellido",
+          "competencias",
+          "habilidades",
+          "experiencia",
+          "educacion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "DatosSolicitanteWithRelations"
+      },
+      "SolicitanteWithRelations": {
+        "title": "SolicitanteWithRelations",
+        "type": "object",
+        "description": "(tsType: SolicitanteWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "idDatos": {
+            "type": "string"
+          },
+          "datosSolicitanteId": {
+            "type": "string"
+          },
+          "datosSolicitante": {
+            "$ref": "#/components/schemas/DatosSolicitanteWithRelations"
+          },
+          "datosSolicitantes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatosSolicitanteWithRelations"
+            }
+          }
+        },
+        "required": [
+          "idDatos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "SolicitanteWithRelations"
+      },
+      "PlazaWithRelations": {
+        "title": "PlazaWithRelations",
+        "type": "object",
+        "description": "(tsType: PlazaWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "iddatosPlaza": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          },
+          "datosPlazas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DatosPlazaWithRelations"
+            }
+          },
+          "solicitantes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SolicitanteWithRelations"
+            }
+          }
+        },
+        "required": [
+          "iddatosPlaza"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "PlazaWithRelations"
+      },
+      "DatosPlazaWithRelations": {
+        "title": "DatosPlazaWithRelations",
+        "type": "object",
+        "description": "(tsType: DatosPlazaWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombrePuesto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "requisitos": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          },
+          "plaza": {
+            "$ref": "#/components/schemas/PlazaWithRelations"
+          }
+        },
+        "required": [
+          "nombrePuesto",
+          "descripcion",
+          "requisitos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "DatosPlazaWithRelations"
+      },
+      "DatosPlazaPartial": {
+        "title": "DatosPlazaPartial",
+        "type": "object",
+        "description": "(tsType: Partial<DatosPlaza>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombrePuesto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "requisitos": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<DatosPlaza>"
+      },
+      "Solicitante": {
+        "title": "Solicitante",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "idDatos": {
+            "type": "string"
+          },
+          "datosSolicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idDatos"
+        ],
+        "additionalProperties": false
+      },
+      "DatosSolicitante": {
+        "title": "DatosSolicitante",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "competencias": {
+            "type": "string"
+          },
+          "habilidades": {
+            "type": "string"
+          },
+          "experiencia": {
+            "type": "string"
+          },
+          "educacion": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "apellido",
+          "competencias",
+          "habilidades",
+          "experiencia",
+          "educacion"
+        ],
+        "additionalProperties": false
+      },
+      "NewDatosSolicitante": {
+        "title": "NewDatosSolicitante",
+        "type": "object",
+        "description": "(tsType: Omit<DatosSolicitante, 'id'>, schemaOptions: { title: 'NewDatosSolicitante', exclude: [ 'id' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "competencias": {
+            "type": "string"
+          },
+          "habilidades": {
+            "type": "string"
+          },
+          "experiencia": {
+            "type": "string"
+          },
+          "educacion": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "apellido",
+          "competencias",
+          "habilidades",
+          "experiencia",
+          "educacion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<DatosSolicitante, 'id'>"
+      },
+      "DatosSolicitantePartial": {
+        "title": "DatosSolicitantePartial",
+        "type": "object",
+        "description": "(tsType: Partial<DatosSolicitante>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "competencias": {
+            "type": "string"
+          },
+          "habilidades": {
+            "type": "string"
+          },
+          "experiencia": {
+            "type": "string"
+          },
+          "educacion": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<DatosSolicitante>"
+      },
+      "NewDatosPlazaInPlaza": {
+        "title": "NewDatosPlazaInPlaza",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<DatosPlaza, 'id'>, 'plazaId'>, schemaOptions: { title: 'NewDatosPlazaInPlaza', exclude: [ 'id' ], optional: [ 'plazaId' ] })",
+        "properties": {
+          "nombrePuesto": {
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string"
+          },
+          "requisitos": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombrePuesto",
+          "descripcion",
+          "requisitos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<DatosPlaza, 'id'>, 'plazaId'>"
+      },
+      "NewSolicitanteInPlaza": {
+        "title": "NewSolicitanteInPlaza",
+        "type": "object",
+        "description": "(tsType: Omit<Solicitante, 'id'>, schemaOptions: { title: 'NewSolicitanteInPlaza', exclude: [ 'id' ] })",
+        "properties": {
+          "idDatos": {
+            "type": "string"
+          },
+          "datosSolicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idDatos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Solicitante, 'id'>"
+      },
+      "SolicitantePartial": {
+        "title": "SolicitantePartial",
+        "type": "object",
+        "description": "(tsType: Partial<Solicitante>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "idDatos": {
+            "type": "string"
+          },
+          "datosSolicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Solicitante>"
+      },
+      "NewPlaza": {
+        "title": "NewPlaza",
+        "type": "object",
+        "description": "(tsType: Omit<Plaza, 'id'>, schemaOptions: { title: 'NewPlaza', exclude: [ 'id' ] })",
+        "properties": {
+          "iddatosPlaza": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "iddatosPlaza"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Plaza, 'id'>"
+      },
+      "PlazaPartial": {
+        "title": "PlazaPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Plaza>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "iddatosPlaza": {
+            "type": "string"
+          },
+          "disponible": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Plaza>"
+      },
+      "NewDatosSolicitanteInSolicitante": {
+        "title": "NewDatosSolicitanteInSolicitante",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<DatosSolicitante, 'id'>, 'solicitanteId'>, schemaOptions: { title: 'NewDatosSolicitanteInSolicitante', exclude: [ 'id' ], optional: [ 'solicitanteId' ] })",
+        "properties": {
+          "nombre": {
+            "type": "string"
+          },
+          "apellido": {
+            "type": "string"
+          },
+          "competencias": {
+            "type": "string"
+          },
+          "habilidades": {
+            "type": "string"
+          },
+          "experiencia": {
+            "type": "string"
+          },
+          "educacion": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "nombre",
+          "apellido",
+          "competencias",
+          "habilidades",
+          "experiencia",
+          "educacion"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<DatosSolicitante, 'id'>, 'solicitanteId'>"
+      },
+      "NewSolicitante": {
+        "title": "NewSolicitante",
+        "type": "object",
+        "description": "(tsType: Omit<Solicitante, 'id'>, schemaOptions: { title: 'NewSolicitante', exclude: [ 'id' ] })",
+        "properties": {
+          "idDatos": {
+            "type": "string"
+          },
+          "datosSolicitanteId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "idDatos"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Solicitante, 'id'>"
+      },
+      "Solicitud": {
+        "title": "Solicitud",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewSolicitud": {
+        "title": "NewSolicitud",
+        "type": "object",
+        "description": "(tsType: Omit<Solicitud, 'id'>, schemaOptions: { title: 'NewSolicitud', exclude: [ 'id' ] })",
+        "properties": {
+          "plazaId": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Solicitud, 'id'>"
+      },
+      "SolicitudWithRelations": {
+        "title": "SolicitudWithRelations",
+        "type": "object",
+        "description": "(tsType: SolicitudWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "SolicitudWithRelations"
+      },
+      "SolicitudPartial": {
+        "title": "SolicitudPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Solicitud>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "plazaId": {
+            "type": "string"
+          },
+          "solicitanteId": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Solicitud>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "DatosPlaza.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "DatosPlaza.ScopeFilter"
+      },
+      "DatosPlaza.IncludeFilter.Items": {
+        "title": "DatosPlaza.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/DatosPlaza.ScopeFilter"
+          }
+        }
+      },
+      "DatosPlaza.Filter": {
+        "type": "object",
+        "title": "DatosPlaza.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombrePuesto": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "requisitos": {
+                    "type": "boolean"
+                  },
+                  "plazaId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombrePuesto",
+                    "descripcion",
+                    "requisitos",
+                    "plazaId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "DatosPlaza.Fields"
+          },
+          "include": {
+            "title": "DatosPlaza.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DatosPlaza.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<DatosPlaza>"
+      },
+      "DatosPlaza.Filter1": {
+        "type": "object",
+        "title": "DatosPlaza.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "DatosPlaza.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombrePuesto": {
+                    "type": "boolean"
+                  },
+                  "descripcion": {
+                    "type": "boolean"
+                  },
+                  "requisitos": {
+                    "type": "boolean"
+                  },
+                  "plazaId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombrePuesto",
+                    "descripcion",
+                    "requisitos",
+                    "plazaId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "DatosPlaza.Fields"
+          },
+          "include": {
+            "title": "DatosPlaza.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DatosPlaza.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<DatosPlaza>"
+      },
+      "DatosSolicitante.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "DatosSolicitante.ScopeFilter"
+      },
+      "DatosSolicitante.IncludeFilter.Items": {
+        "title": "DatosSolicitante.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/DatosSolicitante.ScopeFilter"
+          }
+        }
+      },
+      "DatosSolicitante.Filter": {
+        "type": "object",
+        "title": "DatosSolicitante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "apellido": {
+                    "type": "boolean"
+                  },
+                  "competencias": {
+                    "type": "boolean"
+                  },
+                  "habilidades": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "educacion": {
+                    "type": "boolean"
+                  },
+                  "solicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "apellido",
+                    "competencias",
+                    "habilidades",
+                    "experiencia",
+                    "educacion",
+                    "solicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "DatosSolicitante.Fields"
+          },
+          "include": {
+            "title": "DatosSolicitante.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DatosSolicitante.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<DatosSolicitante>"
+      },
+      "DatosSolicitante.Filter1": {
+        "type": "object",
+        "title": "DatosSolicitante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "DatosSolicitante.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "nombre": {
+                    "type": "boolean"
+                  },
+                  "apellido": {
+                    "type": "boolean"
+                  },
+                  "competencias": {
+                    "type": "boolean"
+                  },
+                  "habilidades": {
+                    "type": "boolean"
+                  },
+                  "experiencia": {
+                    "type": "boolean"
+                  },
+                  "educacion": {
+                    "type": "boolean"
+                  },
+                  "solicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "nombre",
+                    "apellido",
+                    "competencias",
+                    "habilidades",
+                    "experiencia",
+                    "educacion",
+                    "solicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "DatosSolicitante.Fields"
+          },
+          "include": {
+            "title": "DatosSolicitante.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/DatosSolicitante.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<DatosSolicitante>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "Plaza.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Plaza.ScopeFilter"
+      },
+      "Plaza.IncludeFilter.Items": {
+        "title": "Plaza.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Plaza.ScopeFilter"
+          }
+        }
+      },
+      "Plaza.Filter": {
+        "type": "object",
+        "title": "Plaza.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "iddatosPlaza": {
+                    "type": "boolean"
+                  },
+                  "disponible": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "iddatosPlaza",
+                    "disponible"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Plaza.Fields"
+          },
+          "include": {
+            "title": "Plaza.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Plaza.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Plaza>"
+      },
+      "Plaza.Filter1": {
+        "type": "object",
+        "title": "Plaza.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Plaza.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "iddatosPlaza": {
+                    "type": "boolean"
+                  },
+                  "disponible": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "iddatosPlaza",
+                    "disponible"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Plaza.Fields"
+          },
+          "include": {
+            "title": "Plaza.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Plaza.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Plaza>"
+      },
+      "Solicitante.ScopeFilter": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Solicitante.ScopeFilter"
+      },
+      "Solicitante.IncludeFilter.Items": {
+        "title": "Solicitante.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Solicitante.ScopeFilter"
+          }
+        }
+      },
+      "Solicitante.Filter": {
+        "type": "object",
+        "title": "Solicitante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "idDatos": {
+                    "type": "boolean"
+                  },
+                  "datosSolicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "idDatos",
+                    "datosSolicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitante.Fields"
+          },
+          "include": {
+            "title": "Solicitante.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Solicitante.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitante>"
+      },
+      "Solicitante.Filter1": {
+        "type": "object",
+        "title": "Solicitante.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Solicitante.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "idDatos": {
+                    "type": "boolean"
+                  },
+                  "datosSolicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "idDatos",
+                    "datosSolicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitante.Fields"
+          },
+          "include": {
+            "title": "Solicitante.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Solicitante.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitante>"
+      },
+      "Solicitud.Filter": {
+        "type": "object",
+        "title": "Solicitud.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "plazaId": {
+                    "type": "boolean"
+                  },
+                  "solicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "plazaId",
+                    "solicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitud.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitud>"
+      },
+      "Solicitud.Filter1": {
+        "type": "object",
+        "title": "Solicitud.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Solicitud.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "plazaId": {
+                    "type": "boolean"
+                  },
+                  "solicitanteId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "plazaId",
+                    "solicitanteId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Solicitud.Fields"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Solicitud>"
+      }
+    }
+  }
+}
