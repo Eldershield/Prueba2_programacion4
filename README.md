@@ -3,4 +3,5 @@ repositorio de prueba 2 de la clase de programacion 4
 
 Jesus Daniel Bautista Melendez
 62141082
-https://app.genmymodel.com/api/projects/_FyHjYG9_Ee2ck8ytUMEi6A/diagrams/_FyHjY29_Ee2ck8ytUMEi6A/svg
+
+![image](https://user-images.githubusercontent.com/107812965/204431425-2e4a885e-0095-432a-8ad3-765ec9d14793.png)
