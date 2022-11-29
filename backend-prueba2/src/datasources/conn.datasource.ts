@@ -4,11 +4,11 @@ import {juggler} from '@loopback/repository';
 const config = {
   name: 'conn',
   connector: 'mongodb',
-  url: 'mongodb+srv://JesusBautista:HiW4aVl97JJoHVDO@cluster0.09hmtpl.mongodb.net/prueba2',
-  host: '@cluster0.09hmtpl.mongodb.net',
-  port: 27018,
-  user: 'jesusBautista',
-  password: 'HiW4aVl97JJoHVDO',
+  url: 'mongodb+srv://JesusBautista:PSx1QXCbvhQkawG1@cluster0.09hmtpl.mongodb.net/prueba2',
+  host: 'cluster0.09hmtpl.mongodb.net',
+  port: 27017,
+  user: 'JesusBautista',
+  password: 'PSx1QXCbvhQkawG1',
   database: 'prueba2',
   useNewUrlParser: true
 };
